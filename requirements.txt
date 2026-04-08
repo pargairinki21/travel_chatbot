@@ -5,4 +5,3 @@ google-cloud-aiplatform==1.146.0
 requests==2.33.1
 python-multipart==0.0.24
 python-dotenv==1.2.2
-marked==1.0.0
