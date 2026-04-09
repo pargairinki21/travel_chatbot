@@ -1,10 +1,17 @@
 from google.adk.agents import Agent, SequentialAgent
 from google.adk.models.google_llm import Gemini
 from tools import maps_tool, weather_tool
+import os
+from dotenv import load_dotenv
+
+load_dotenv() # Add this here too!
+
+# Use the environment variable explicitly to be safe
+gemini_model = Gemini(model="gemini-2.5-flash", api_key=os.getenv("GOOGLE_API_KEY"))
 
 mapper_agent = Agent(
     name="TechnicalMapper",
-    model=Gemini(model="gemini-2.5-flash"),
+    model=gemini_model,
     instruction=(
         "You are a travel logistics expert. "
         "1. Use find_travel_destinations for the user's city. "
@@ -14,6 +21,8 @@ mapper_agent = Agent(
     tools=[maps_tool, weather_tool],
     output_key="raw_travel_data"
 )
+
+# ... keep the rest of your guide_agent and travel_system logic ...
 
 guide_agent = Agent(
     name="CreativeGuide",

@@ -24,8 +24,9 @@ app.add_middleware(
 )
 
 # 4. Your original logic & IDs
-USER_ID = "user-1"
-SESSION_ID = "session-1"
+# In main.py
+USER_ID = "user-v3"
+SESSION_ID = "session-v3-fresh" # Change this!
 runner = InMemoryRunner(agent=travel_system)
 
 # 5. Startup logic: This replaces your "while True" loop start
